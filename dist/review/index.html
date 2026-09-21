@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Decision-by-decision assessor review for DPI-HT-01.">
+    <title>DPI Decision Review</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/assets/app.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="/"><span class="brand-mark">DPI</span><span>Financial review<small>Takeover case · DPI-HT-01</small></span></a>
+        <nav class="nav" aria-label="Primary navigation"><a href="/">Overview</a><a href="/review/" aria-current="page">Decision review</a><a href="/submission.json">Submission data</a></nav>
+      </div>
+    </header>
+    <main class="shell">
+      <section class="review-head">
+        <div><p class="eyebrow">Assessor view</p><h1>Evidence and AI review trail</h1></div>
+        <div class="review-tools" role="group" aria-label="Filter decisions">
+          <button class="filter active" data-filter="all">All decisions</button>
+          <button class="filter" data-filter="material_judgment">Material judgments</button>
+          <button class="filter" data-filter="operational">Operational</button>
+          <button class="filter" data-filter="changed">Agent 2 challenges / student overrides</button>
+          <button class="filter" data-filter="low">Low confidence</button>
+          <button class="filter" data-filter="unresolved">Unresolved uncertainty</button>
+        </div>
+      </section>
+      <aside class="notice"><b>How to read this page</b><span>Each material decision follows the same review path: Agent 1 proposal, Agent 2's independent challenge, then the approved student position and its statement effect.</span></aside>
+      <section class="decision-summary" aria-label="Decision summary">
+        <div class="summary-tile"><strong id="total-decisions">—</strong>total decisions</div>
+        <div class="summary-tile"><strong id="material-decisions">—</strong>material judgments</div>
+        <div class="summary-tile"><strong id="changed-decisions">—</strong>Agent 2 challenges / student overrides</div>
+        <div class="summary-tile"><strong id="low-decisions">—</strong>low-confidence decisions</div>
+        <div class="summary-tile"><strong id="unresolved-decisions">—</strong>unresolved items</div>
+      </section>
+      <aside class="uncertainty-banner"><b>Open matters</b><span>Inventory (€9,000), disposal cost (€2,000), opening payables (€45,000), potential founder recovery (€110,000), and missing insurance evidence are disclosed—not plugged.</span></aside>
+      <section class="review-trail-intro" aria-labelledby="trail-title">
+        <div>
+          <p class="eyebrow">Independent review</p>
+          <h2 id="trail-title">How each material judgment was tested</h2>
+        </div>
+        <div class="trail-flow" aria-label="Review sequence"><span>1 <b>Agent 1</b><small>first proposal</small></span><i>→</i><span>2 <b>Agent 2</b><small>independent challenge</small></span><i>→</i><span>3 <b>Approved position</b><small>student-certified</small></span></div>
+        <div class="trail-actions"><button class="trail-action" type="button" data-action="expand-material">Open material decisions</button><button class="trail-action secondary" type="button" data-action="collapse">Close all</button></div>
+      </section>
+      <section class="decision-list" id="decision-list"><div class="loading">Loading decision trail…</div></section>
+    </main>
+    <script src="/assets/review.js?v=case-evidence-2"></script>
+  </body>
+</html>

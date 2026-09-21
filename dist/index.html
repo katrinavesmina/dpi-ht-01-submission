@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Financial review of Divorce Party International Ltd. at 31 August 2026.">
+    <title>DPI Financial Review</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/assets/app.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="/"><span class="brand-mark">DPI</span><span>Financial review<small>Takeover case · DPI-HT-01</small></span></a>
+        <nav class="nav" aria-label="Primary navigation"><a href="/" aria-current="page">Overview</a><a href="/review/">Decision review</a><a href="/submission.json">Submission data</a></nav>
+      </div>
+    </header>
+    <main class="shell" id="app">
+      <section class="case-strip">
+        <div><p class="eyebrow">Corrected accounts</p><h1>What the evidence says</h1></div>
+        <div class="asof"><strong>31 August 2026</strong>EUR · VAT and income tax outside scope</div>
+      </section>
+      <aside class="notice"><b>Review status</b><span>100 evidence-backed decisions are ready for assessor review. Two independent AI analyses were compared before the approved positions were recorded.</span></aside>
+      <section class="metric-grid" aria-label="Key financial results">
+        <article class="metric"><div class="metric-label">Profit before tax</div><div class="metric-value" data-profit>—</div><div class="metric-note">Corrected figure, not management profit</div></article>
+        <article class="metric warning"><div class="metric-label">Closing cash</div><div class="metric-value" data-cash>—</div><div class="metric-note">Bank-confirmed cash position</div></article>
+        <article class="metric"><div class="metric-label">Closing equity</div><div class="metric-value" data-equity>—</div><div class="metric-note">After owner distributions</div></article>
+        <article class="metric risk"><div class="metric-label">Decision trail</div><div class="metric-value" data-decisions>—</div><div class="metric-note">Decisions with evidence and confidence</div></article>
+      </section>
+      <section class="impact-overview" aria-labelledby="impact-title">
+        <div class="impact-intro">
+          <p class="eyebrow">Statement impact map</p>
+          <h2 id="impact-title">What the decisions change</h2>
+          <p>These are the material classifications that move profit, assets, liabilities, or equity. They explain the corrected accounts without hiding the remaining €9,000 inventory reconciliation issue.</p>
+          <div class="impact-key"><span><i class="impact-dot profit-dot"></i>Profit</span><span><i class="impact-dot asset-dot"></i>Assets</span><span><i class="impact-dot liability-dot"></i>Liabilities</span><span><i class="impact-dot equity-dot"></i>Equity</span></div>
+        </div>
+        <div class="impact-grid" id="impact-grid"><div class="loading">Loading statement impacts…</div></div>
+      </section>
+      <section class="layout">
+        <article class="card">
+          <div class="card-header"><div><h2>Corrected profit and loss</h2><p>Profit follows delivery and consumption—not management labels or cash timing.</p></div><span class="chip material">Reviewed</span></div>
+          <div class="card-body"><table class="statement-table"><tbody id="pnl-table"><tr><td class="loading">Loading accounts…</td></tr></tbody></table></div>
+        </article>
+        <article class="card">
+          <div class="card-header"><div><h2>Cash-flow statement</h2><p>Cash movements explain the bank-confirmed closing balance.</p></div><span class="chip good">Tied</span></div>
+          <div class="card-body"><table class="statement-table"><tbody id="cashflow-table"><tr><td class="loading">Loading cash flow…</td></tr></tbody></table></div>
+        </article>
+        <aside class="card">
+          <div class="card-header"><div><h2>Immediate board actions</h2><p>Priority controls following the takeover.</p></div></div>
+          <div class="card-body"><ol class="actions" id="action-list"><li>Loading actions…</li></ol></div>
+        </aside>
+        <article class="card">
+          <div class="card-header"><div><h2>Balance sheet at 31 August</h2><p>Assets are shown against liabilities and equity.</p></div><span class="chip good">Balances</span></div>
+          <div class="card-body"><table class="statement-table"><tbody id="balance-table"><tr><td class="loading">Loading balance sheet…</td></tr></tbody></table></div>
+        </article>
+        <aside class="card">
+          <div class="card-header"><div><h2>Reconciliations</h2><p>Key checks linking source evidence to the accounts.</p></div></div>
+          <div class="card-body"><div class="reconcile-list" id="reconcile-list"><div class="loading">Loading checks…</div></div></div>
+        </aside>
+        <article class="card full-card">
+          <div class="card-header"><div><h2>Supporting schedules</h2><p>The working schedules that connect evidence to the three statements.</p></div></div>
+          <div class="card-body"><div class="schedule-grid" id="schedule-grid"><div class="loading">Loading schedules…</div></div></div>
+        </article>
+        <article class="card evidence-card">
+          <div class="card-header"><div><h2>Evidence inventory</h2><p>Sources are ranked by how directly they support the reconstructed accounts.</p></div></div>
+          <div class="card-body"><div class="evidence-inventory" id="evidence-inventory"><div class="loading">Loading evidence inventory…</div></div></div>
+        </article>
+        <article class="card uncertainty-card">
+          <div class="card-header"><div><h2>Unresolved uncertainty</h2><p>Issues remain visible rather than being converted into unsupported entries.</p></div><span class="chip warn">Review</span></div>
+          <div class="card-body"><div class="uncertainty-list" id="uncertainty-list"><div class="loading">Loading open issues…</div></div></div>
+        </article>
+      </section>
+      <p class="footer-note">The approved reconstruction uses static evidence data only. No login, database, or paid service is required.</p>
+    </main>
+    <script src="/assets/main.js?v=balance-sheet-3"></script>
+  </body>
+</html>
