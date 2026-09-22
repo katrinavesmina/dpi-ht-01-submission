@@ -718,21 +718,21 @@
       "category": "classification",
       "reviewTier": "material_judgment",
       "question": "Classify Physical product materials consumed.",
-      "answer": "Use EUR 396,000 physical materials consumed and separately record EUR 22,000 damaged-stock write-down; disclose EUR 9,000 source conflict.",
+      "answer": "Use EUR 405,000 materials consumed and separately record the EUR 22,000 damaged-stock write-down. The resulting roll-forward gives EUR 112,000 closing inventory; disclose the separate EUR 9,000 count-to-roll-forward variance.",
       "evidence": [
         "E06",
         "E07"
       ],
       "confidence": "medium",
       "aiProposal": "Use EUR 418,000 total inventory cost based on a net closing inventory roll-forward.",
-      "independentChallenge": "Independent analysis used EUR 396,000 physical consumption plus EUR 22,000 write-down and exposed the EUR 9,000 conflict.",
-      "studentReasoning": "I approved the observed-count basis because it is direct evidence and the EUR 9,000 conflict should remain visible.",
+      "independentChallenge": "The initial independent analysis used EUR 396,000 consumption plus the EUR 22,000 write-down, based on the count. It exposed the EUR 9,000 conflict.",
+      "studentReasoning": "On re-audit, I used the warehouse roll-forward's explicit EUR 405,000 consumption amount. The €9,000 difference between the net physical count and roll-forward remains disclosed rather than being hidden.",
       "statementEffect": {
-        "profit": -396000,
+        "profit": -405000,
         "cash": 0,
-        "assets": -396000,
+        "assets": -405000,
         "liabilities": 0,
-        "equity": -396000
+        "equity": -405000
       },
       "changedFromAI": true
     },
@@ -1199,15 +1199,15 @@
       "category": "estimation",
       "reviewTier": "material_judgment",
       "question": "Estimate Closing inventory and document the basis.",
-      "answer": "Estimate closing inventory at EUR 121,000, based on EUR 143,000 gross count less EUR 22,000 write-down.",
+      "answer": "Estimate closing inventory at EUR 112,000 from the supported roll-forward: EUR 80,000 opening inventory + EUR 459,000 purchases - EUR 405,000 consumed - EUR 22,000 write-down.",
       "evidence": [
         "E06",
         "E07"
       ],
       "confidence": "medium",
-      "aiProposal": "Use EUR 121,000 recoverable closing inventory and disclose the EUR 9,000 inconsistency.",
-      "independentChallenge": "Independent analysis agreed with EUR 121,000 closing inventory while preserving the EUR 9,000 discrepancy.",
-      "studentReasoning": "I approved EUR 121,000 because the physical count is strongest for closing stock after removing unsaleable goods.",
+      "aiProposal": "The initial Agent 1 proposal used EUR 121,000 recoverable closing inventory and disclosed the EUR 9,000 inconsistency.",
+      "independentChallenge": "The initial Agent 2 analysis also used EUR 121,000 while preserving the EUR 9,000 discrepancy.",
+      "studentReasoning": "On re-audit, I approved EUR 112,000 because the same warehouse evidence explicitly provides the consumption amount used in the inventory roll-forward. The EUR 121,000 count result is retained as an unresolved €9,000 variance.",
       "statementEffect": {
         "profit": null,
         "cash": null,
@@ -1341,7 +1341,7 @@
       "category": "estimation",
       "reviewTier": "operational",
       "question": "Estimate Physical COGS and document the basis.",
-      "answer": "Estimate physical COGS at EUR 396,000, while disclosing the conflicting EUR 405,000 consumption note.",
+      "answer": "Estimate materials consumed at EUR 405,000 from the warehouse roll-forward; disclose the EUR 9,000 difference to the net physical-count amount.",
       "evidence": [
         "E06",
         "E07"
@@ -1376,7 +1376,7 @@
       "category": "estimation",
       "reviewTier": "operational",
       "question": "Estimate Net profit and document the basis.",
-      "answer": "Estimate corrected profit before tax at EUR 74,000.",
+      "answer": "Estimate corrected profit before tax at EUR 65,000 after using EUR 405,000 materials consumed rather than EUR 396,000.",
       "evidence": [
         "E03",
         "E04",
@@ -1407,7 +1407,7 @@
       "category": "board_decision",
       "reviewTier": "material_judgment",
       "question": "Approve corrected accounts before valuation",
-      "answer": "Approve corrected accounts before valuation, subject to disclosed EUR 9,000 inventory conflict and EUR 2,000 disposal-cost uncertainty.",
+      "answer": "Approve corrected accounts before valuation using EUR 405,000 materials consumed, EUR 112,000 closing inventory and EUR 65,000 profit before tax; disclose the EUR 9,000 count-to-roll-forward variance and EUR 2,000 disposal-cost uncertainty.",
       "evidence": [
         "E03",
         "E04",
@@ -1421,8 +1421,8 @@
       ],
       "confidence": "medium",
       "aiProposal": "Approve corrected accounts with EUR 72,000 profit before tax, including a EUR 2,000 disposal provision.",
-      "independentChallenge": "Independent analysis supported EUR 74,000 profit before tax if the disposal quote remains disclosed rather than accrued.",
-      "studentReasoning": "I approved corrected accounts with transparent uncertainties because the evidence-based statements reconcile and management figures do not.",
+      "independentChallenge": "The initial independent analysis supported EUR 74,000 profit before tax if the disposal quote remained disclosed rather than accrued.",
+      "studentReasoning": "Following the source re-audit, I approved EUR 65,000 profit before tax. The result uses the warehouse roll-forward's explicit EUR 405,000 consumption amount; the disposal quote remains disclosure-only.",
       "statementEffect": {
         "profit": null,
         "cash": null,
@@ -1538,7 +1538,7 @@
       "category": "board_decision",
       "reviewTier": "material_judgment",
       "question": "Use claimed management profit for earn-out",
-      "answer": "Do not use management profit EUR 312,000 for earn-out; use corrected EUR 74,000 profit before tax with disclosed uncertainties.",
+      "answer": "Do not use management profit EUR 312,000 for earn-out; use corrected EUR 65,000 profit before tax with disclosed uncertainties.",
       "evidence": [
         "E02",
         "E03",
@@ -1578,9 +1578,9 @@
     "inventoryAndCOGS": {
       "openingInventory": 80000,
       "purchases": 459000,
-      "physicalMaterialsConsumed": 396000,
+      "physicalMaterialsConsumed": 405000,
       "damagedInventoryWriteDown": 22000,
-      "closingInventoryNet": 121000,
+      "closingInventoryNet": 112000,
       "unresolvedConsumptionDifference": 9000,
       "disposalQuoteNotAccrued": 2000
     },
@@ -1611,28 +1611,28 @@
     },
     "equity": {
       "openingEquityInferred": 170000,
-      "profitBeforeTax": 74000,
+      "profitBeforeTax": 65000,
       "ownerDistributions": 110000,
-      "closingEquity": 134000,
+      "closingEquity": 125000,
       "openingTradePayablesInferred": 45000
     }
   },
   "statements": {
     "profitAndLoss": {
       "revenue": 960000,
-      "physicalMaterialsConsumed": -396000,
+      "physicalMaterialsConsumed": -405000,
       "eventDeliveryPayroll": -80000,
       "inventoryWriteDown": -22000,
-      "grossProfit": 462000,
+      "grossProfit": 453000,
       "salesPayroll": -72000,
       "officePayroll": -96000,
       "otherOperatingExpenses": -141000,
       "depreciation": -24000,
       "expectedCreditLoss": -18000,
       "legalProvision": -25000,
-      "operatingProfit": 86000,
+      "operatingProfit": 77000,
       "interestExpense": -12000,
-      "profitBeforeTax": 74000
+      "profitBeforeTax": 65000
     },
     "cashFlow": {
       "customerReceipts": 899000,
@@ -1653,9 +1653,9 @@
       "receivablesGross": 186000,
       "expectedCreditLoss": -18000,
       "receivablesNet": 168000,
-      "inventoryNet": 121000,
+      "inventoryNet": 112000,
       "ppeNet": 191000,
-      "totalAssets": 540000,
+      "totalAssets": 531000,
       "tradePayables": 126000,
       "payrollAccrual": 32000,
       "interestPayable": 2000,
@@ -1663,8 +1663,8 @@
       "bankLoan": 131000,
       "legalProvision": 25000,
       "totalLiabilities": 406000,
-      "equity": 134000,
-      "totalLiabilitiesAndEquity": 540000
+      "equity": 125000,
+      "totalLiabilitiesAndEquity": 531000
     }
   },
   "reconciliations": [
@@ -1680,9 +1680,9 @@
     },
     {
       "name": "Inventory",
-      "calculation": "80,000 opening + 459,000 purchases - 396,000 physical consumption - 22,000 write-down = 121,000",
+      "calculation": "80,000 opening + 459,000 purchases - 405,000 materials consumed - 22,000 write-down = 112,000",
       "difference": 0,
-      "uncertainty": "Separate EUR 405,000 consumption statement creates a EUR 9,000 conflict."
+      "uncertainty": "The net physical count is EUR 121,000; it exceeds the EUR 112,000 roll-forward result by EUR 9,000. The cause is not evidenced."
     },
     {
       "name": "Trade payables",
@@ -1706,12 +1706,12 @@
     },
     {
       "name": "Equity",
-      "calculation": "170,000 inferred opening equity + 74,000 profit - 110,000 distributions = 134,000",
+      "calculation": "170,000 inferred opening equity + 65,000 profit - 110,000 distributions = 125,000",
       "difference": 0
     },
     {
       "name": "Accounting equation",
-      "calculation": "540,000 assets = 406,000 liabilities + 134,000 equity",
+      "calculation": "531,000 assets = 406,000 liabilities + 125,000 equity",
       "difference": 0
     }
   ],
@@ -1719,7 +1719,7 @@
     {
       "issue": "Inventory consumption conflict",
       "amount": 9000,
-      "treatment": "Use count-based consumption and disclose; no unsupported plug."
+      "treatment": "Use the explicit EUR 405,000 warehouse roll-forward consumption amount. Disclose the EUR 9,000 difference to the net physical count; do not create an unsupported plug."
     },
     {
       "issue": "Damaged-stock disposal quote",
@@ -1743,7 +1743,7 @@
     }
   ],
   "boardRecommendation": {
-    "correctedProfitBeforeTax": 74000,
+    "correctedProfitBeforeTax": 65000,
     "closingCash": 60000,
     "recommendation": "Continue core Finally Single and event operations only with immediate cash, credit, and governance controls.",
     "immediateActions": [

@@ -2,7 +2,7 @@ const euro = new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR'
 const money = (value) => value < 0 ? `(${euro.format(Math.abs(value))})` : euro.format(value);
 
 async function loadSubmission() {
-  const response = await fetch('/submission.json?v=case-evidence-2');
+  const response = await fetch('/submission.json?v=warehouse-reaudit-1');
   if (!response.ok) throw new Error('The approved submission data could not be loaded.');
   return response.json();
 }
@@ -52,7 +52,7 @@ function renderSchedules(data) {
   const s = data.schedules;
   document.querySelector('#schedule-grid').innerHTML = [
     scheduleCard('Revenue & receivables', scheduleRows([['Delivered revenue', s.revenueAndReceivables.deliveredRevenue], ['Gross receivables', s.revenueAndReceivables.closingReceivablesGross], ['R-17 loss allowance', -s.revenueAndReceivables.r17Allowance], ['Net receivables', s.revenueAndReceivables.closingReceivablesNet], ['Contract liabilities', s.revenueAndReceivables.contractLiabilities]])),
-    scheduleCard('Inventory & materials', scheduleRows([['Opening inventory', s.inventoryAndCOGS.openingInventory], ['Purchases', s.inventoryAndCOGS.purchases], ['Materials consumed', -s.inventoryAndCOGS.physicalMaterialsConsumed], ['Damaged-stock write-down', -s.inventoryAndCOGS.damagedInventoryWriteDown], ['Closing inventory, net', s.inventoryAndCOGS.closingInventoryNet]]), '€9,000 consumption difference and €2,000 disposal quote remain disclosed.'),
+    scheduleCard('Inventory & materials', scheduleRows([['Opening inventory', s.inventoryAndCOGS.openingInventory], ['Purchases', s.inventoryAndCOGS.purchases], ['Materials consumed', -s.inventoryAndCOGS.physicalMaterialsConsumed], ['Damaged-stock write-down', -s.inventoryAndCOGS.damagedInventoryWriteDown], ['Closing inventory, net', s.inventoryAndCOGS.closingInventoryNet]]), 'The roll-forward gives €112,000. The separate net physical count is €121,000, leaving a disclosed €9,000 variance; the €2,000 disposal quote remains disclosure-only.'),
     scheduleCard('Payroll', scheduleRows([['Payroll expense', s.payroll.expense], ['Cash paid', -s.payroll.cashPaid], ['Closing payroll payable', s.payroll.closingPayable], ['Direct event payroll', s.payroll.serviceDirectPayroll]])),
     scheduleCard('PPE & depreciation', scheduleRows([['Closing cost', s.ppeAndDepreciation.closingCost], ['Closing accumulated depreciation', -s.ppeAndDepreciation.closingAccumulatedDepreciation], ['Closing PPE, net', s.ppeAndDepreciation.closingNetPPE]])),
     scheduleCard('Debt & interest', scheduleRows([['Opening loan', s.debtAndInterest.openingLoan], ['New borrowing', s.debtAndInterest.newBorrowing], ['Principal repaid', -s.debtAndInterest.principalRepaid], ['Closing loan', s.debtAndInterest.closingLoan], ['Interest payable', s.debtAndInterest.interestPayable]])),

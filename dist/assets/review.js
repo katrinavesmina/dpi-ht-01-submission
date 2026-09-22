@@ -27,7 +27,7 @@ function render() {
 }
 
 async function start() {
-  const response = await fetch('/submission.json?v=case-evidence-2');
+  const response = await fetch('/submission.json?v=warehouse-reaudit-1');
   if (!response.ok) throw new Error('Submission data unavailable.');
   const data = await response.json();
   decisions = data.decisions;
