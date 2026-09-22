@@ -2,7 +2,7 @@ const euro = new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR'
 const money = (value) => value < 0 ? `(${euro.format(Math.abs(value))})` : euro.format(value);
 
 async function loadSubmission() {
-  const response = await fetch('/submission.json?v=warehouse-reaudit-1');
+  const response = await fetch('/submission.json?v=owner-opex-trace-1');
   if (!response.ok) throw new Error('The approved submission data could not be loaded.');
   return response.json();
 }
@@ -28,7 +28,7 @@ function renderImpact(data) {
   const cards = [
     { ids: ['D041'], label: 'Revenue timing', note: '€90k September deposits stay as contract liabilities until delivery.' },
     { ids: ['D042'], label: 'Bank borrowing', note: '€50k is debt, not income.' },
-    { ids: ['D046', 'D047'], label: 'Owner spending', note: '€110k is an owner distribution, not a business expense.' },
+    { ids: ['D046', 'D047'], label: 'Owner spending', note: 'Original €110k bank withdrawals reduce cash/assets and equity; they are distributions, not business expenses.' },
     { ids: ['D057'], label: 'R-17 receivable', note: '€18k loss reduces the receivable to its expected recoverable amount.' },
     { ids: ['D058'], label: 'Damaged inventory', note: '€22k write-down; the separate €2k disposal quote is disclosed, not accrued.' },
     { ids: ['D059'], label: 'Legal claim', note: '€25k best-estimate provision records the probable obligation.' },
@@ -54,6 +54,7 @@ function renderSchedules(data) {
     scheduleCard('Revenue & receivables', scheduleRows([['Delivered revenue', s.revenueAndReceivables.deliveredRevenue], ['Gross receivables', s.revenueAndReceivables.closingReceivablesGross], ['R-17 loss allowance', -s.revenueAndReceivables.r17Allowance], ['Net receivables', s.revenueAndReceivables.closingReceivablesNet], ['Contract liabilities', s.revenueAndReceivables.contractLiabilities]])),
     scheduleCard('Inventory & materials', scheduleRows([['Opening inventory', s.inventoryAndCOGS.openingInventory], ['Purchases', s.inventoryAndCOGS.purchases], ['Materials consumed', -s.inventoryAndCOGS.physicalMaterialsConsumed], ['Damaged-stock write-down', -s.inventoryAndCOGS.damagedInventoryWriteDown], ['Closing inventory, net', s.inventoryAndCOGS.closingInventoryNet]]), 'The roll-forward gives €112,000. The separate net physical count is €121,000, leaving a disclosed €9,000 variance; the €2,000 disposal quote remains disclosure-only.'),
     scheduleCard('Payroll', scheduleRows([['Payroll expense', s.payroll.expense], ['Cash paid', -s.payroll.cashPaid], ['Closing payroll payable', s.payroll.closingPayable], ['Direct event payroll', s.payroll.serviceDirectPayroll]])),
+    scheduleCard('Other operating expenses', scheduleRows([['Rent', s.otherOperatingExpenses.rent], ['Marketing', s.otherOperatingExpenses.marketing], ['Software', s.otherOperatingExpenses.software], ['Utilities', s.otherOperatingExpenses.utilities], ['Repairs', s.otherOperatingExpenses.repairs], ['Total expense / cash paid', s.otherOperatingExpenses.total]]), 'Each amount is supported by a bank payment: €48k + €55k + €16k + €12k + €10k = €141k. No operating-expense accrual is used.'),
     scheduleCard('PPE & depreciation', scheduleRows([['Closing cost', s.ppeAndDepreciation.closingCost], ['Closing accumulated depreciation', -s.ppeAndDepreciation.closingAccumulatedDepreciation], ['Closing PPE, net', s.ppeAndDepreciation.closingNetPPE]])),
     scheduleCard('Debt & interest', scheduleRows([['Opening loan', s.debtAndInterest.openingLoan], ['New borrowing', s.debtAndInterest.newBorrowing], ['Principal repaid', -s.debtAndInterest.principalRepaid], ['Closing loan', s.debtAndInterest.closingLoan], ['Interest payable', s.debtAndInterest.interestPayable]])),
     scheduleCard('Equity', scheduleRows([['Inferred opening equity', s.equity.openingEquityInferred], ['Profit before tax', s.equity.profitBeforeTax], ['Owner distributions', -s.equity.ownerDistributions], ['Closing equity', s.equity.closingEquity]]), 'Opening trade payables of €45,000 are inferred from the roll-forward and require corroboration.'),
@@ -86,7 +87,7 @@ function showSite(data) {
     ['Equity', null, 'section'], ['Closing equity', bs.equity], ['Total liabilities and equity', totalLiabilities + bs.equity, true],
   ]);
   document.querySelector('#cashflow-table').innerHTML = rows([
-    ['Customer receipts', cf.customerReceipts], ['Supplier payments', cf.supplierPayments], ['Payroll, operating and interest payments', cf.payrollOperatingAndInterestPayments], ['Net cash from operations', cf.netCashFromOperations, true], ['PPE purchases', cf.ppePurchases], ['Net cash used in investing', cf.netCashUsedInInvesting, true], ['Loan advance less principal repaid', cf.loanAdvanceLessPrincipalRepaid], ['Owner distributions', cf.ownerDistributions], ['Net cash used in financing', cf.netCashUsedInFinancing, true], ['Net decrease in cash', cf.netDecreaseInCash], ['Opening cash', cf.openingCash], ['Closing cash', cf.closingCash, true],
+    ['Customer receipts', cf.customerReceipts], ['Supplier payments', cf.supplierPayments], ['Operating cash payments', null, 'section'], ['Payroll payments', cf.payrollPayments], ['Rent payments', cf.rentPayments], ['Marketing payments', cf.marketingPayments], ['Software payments', cf.softwarePayments], ['Utilities payments', cf.utilitiesPayments], ['Repair payments', cf.repairPayments], ['Interest paid', cf.interestPayments], ['Total payroll, operating and interest payments', cf.payrollOperatingAndInterestPayments, true], ['Net cash from operations', cf.netCashFromOperations, true], ['PPE purchases', cf.ppePurchases], ['Net cash used in investing', cf.netCashUsedInInvesting, true], ['Loan advance less principal repaid', cf.loanAdvanceLessPrincipalRepaid], ['Owner distributions', cf.ownerDistributions], ['Net cash used in financing', cf.netCashUsedInFinancing, true], ['Net decrease in cash', cf.netDecreaseInCash], ['Opening cash', cf.openingCash], ['Closing cash', cf.closingCash, true],
   ]);
   document.querySelector('#reconcile-list').innerHTML = data.reconciliations.slice(0, 5).map(item => `<div class="reconcile"><strong>${item.name} <span class="chip good">Tied</span></strong><span>${item.calculation}</span></div>`).join('');
   document.querySelector('#action-list').innerHTML = data.boardRecommendation.immediateActions.slice(0, 5).map(item => `<li>${item}</li>`).join('');

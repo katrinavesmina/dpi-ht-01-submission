@@ -672,7 +672,7 @@
       "category": "classification",
       "reviewTier": "material_judgment",
       "question": "Classify Owner villa deposit.",
-      "answer": "Classify EUR 70,000 owner villa deposit as owner distribution; no enforceable recovery right is evidenced.",
+      "answer": "Treat the EUR 70,000 villa payment as an original owner withdrawal: debit owner distributions/equity and credit cash. The bank-paid cash outflow is already included in the closing-cash reconstruction; no owner receivable or enforceable recovery right is evidenced.",
       "evidence": [
         "E03",
         "E10"
@@ -680,11 +680,12 @@
       "confidence": "medium",
       "aiProposal": "Treat the villa payment as owner distribution unless a recovery right is documented.",
       "independentChallenge": "Independent analysis agreed that personal ownership and absent business purpose support distribution treatment.",
-      "studentReasoning": "I approved owner-distribution treatment because the villa is personal and no genuine business purpose was evidenced.",
+      "studentReasoning": "I approved owner-distribution treatment because the villa is in the founder's personal name, no genuine business purpose was evidenced, and the bank proves an original EUR 70,000 cash withdrawal.",
+      "effectBasis": "Original transaction effect: cash and assets fell when the bank payment was made, and equity fell through the owner distribution. The cash-flow statement already contains this payment, so this is not a second cash adjustment.",
       "statementEffect": {
         "profit": 0,
-        "cash": 0,
-        "assets": 0,
+        "cash": -70000,
+        "assets": -70000,
         "liabilities": 0,
         "equity": -70000
       },
@@ -695,7 +696,7 @@
       "category": "classification",
       "reviewTier": "material_judgment",
       "question": "Classify Owner card spending.",
-      "answer": "Classify EUR 40,000 owner-card spending as owner distribution; no enforceable recovery right is evidenced.",
+      "answer": "Treat the EUR 40,000 owner-card spending as an original owner withdrawal: debit owner distributions/equity and credit cash. The bank-paid cash outflow is already included in the closing-cash reconstruction; no owner receivable or enforceable recovery right is evidenced.",
       "evidence": [
         "E03",
         "E10"
@@ -703,11 +704,12 @@
       "confidence": "medium",
       "aiProposal": "Treat owner-card spending as owner distribution unless a recovery right is documented.",
       "independentChallenge": "Independent analysis agreed that absent employment approval or business purpose, this is owner spending.",
-      "studentReasoning": "I approved owner-distribution treatment because the spending lacks employment approval and a business purpose.",
+      "studentReasoning": "I approved owner-distribution treatment because the spending lacks employment approval and a business purpose, and the bank proves an original EUR 40,000 cash withdrawal.",
+      "effectBasis": "Original transaction effect: cash and assets fell when the bank payment was made, and equity fell through the owner distribution. The cash-flow statement already contains this payment, so this is not a second cash adjustment.",
       "statementEffect": {
         "profit": 0,
-        "cash": 0,
-        "assets": 0,
+        "cash": -40000,
+        "assets": -40000,
         "liabilities": 0,
         "equity": -40000
       },
@@ -1591,6 +1593,15 @@
       "closingPayable": 32000,
       "serviceDirectPayroll": 80000
     },
+    "otherOperatingExpenses": {
+      "rent": 48000,
+      "marketing": 55000,
+      "software": 16000,
+      "utilities": 12000,
+      "repairs": 10000,
+      "total": 141000,
+      "cashPaid": 141000
+    },
     "ppeAndDepreciation": {
       "openingCost": 180000,
       "additions": 80000,
@@ -1637,6 +1648,13 @@
     "cashFlow": {
       "customerReceipts": 899000,
       "supplierPayments": -378000,
+      "payrollPayments": -231000,
+      "rentPayments": -48000,
+      "marketingPayments": -55000,
+      "softwarePayments": -16000,
+      "utilitiesPayments": -12000,
+      "repairPayments": -10000,
+      "interestPayments": -10000,
       "payrollOperatingAndInterestPayments": -382000,
       "netCashFromOperations": 139000,
       "ppePurchases": -80000,
@@ -1695,6 +1713,11 @@
       "difference": 0
     },
     {
+      "name": "Operating expenses and operating cash paid",
+      "calculation": "48,000 rent + 55,000 marketing + 16,000 software + 12,000 utilities + 10,000 repairs = 141,000 expense and cash paid; 231,000 payroll + 141,000 operating expenses + 10,000 interest paid = 382,000 cash payments in operating activities",
+      "difference": 0
+    },
+    {
       "name": "PPE",
       "calculation": "(180,000 opening cost + 80,000 additions) - (45,000 opening accumulated depreciation + 24,000 depreciation) = 191,000",
       "difference": 0
@@ -1734,7 +1757,7 @@
     {
       "issue": "Founder recovery right",
       "amount": 110000,
-      "treatment": "Classified as distribution unless enforceable, collectible recovery is evidenced."
+      "treatment": "The bank proves original EUR 110,000 cash withdrawals; they reduce cash/assets and equity as distributions. No owner receivable is recognised unless enforceable, collectible recovery is evidenced."
     },
     {
       "issue": "Insurance",

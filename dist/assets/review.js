@@ -17,7 +17,7 @@ function decisionCard(d) {
       <article class="trail-step challenge"><span>2 · Agent 2</span><h3>Independent challenge</h3><p>${d.independentChallenge}</p></article>
       <article class="trail-step certified"><span>3 · Approved</span><h3>Student reasoning</h3><p>${d.studentReasoning}</p></article>
     </div>
-    <div class="detail-block effect-block"><h3>Statement effect</h3><p class="effect-caption">Impact of this classification compared with the treatment it replaces. It does not add a second amount to the final statements.</p><div class="effect">${Object.entries(d.statementEffect).map(([key, value]) => `<span class="effect-${key}">${effectLabel[key]}<b>${fmt(value)}</b></span>`).join('')}</div></div>` : '';
+    <div class="detail-block effect-block"><h3>Statement effect</h3><p class="effect-caption">${d.effectBasis || 'Impact of this classification compared with the treatment it replaces. It does not add a second amount to the final statements.'}</p><div class="effect">${Object.entries(d.statementEffect).map(([key, value]) => `<span class="effect-${key}">${effectLabel[key]}<b>${fmt(value)}</b></span>`).join('')}</div></div>` : '';
   return `<details class="decision ${d.changedFromAI ? 'decision-changed' : ''}" data-tier="${d.reviewTier}" data-unresolved="${unresolvedDecisionIds.has(d.id)}"><summary><span class="decision-id">${d.id}</span><span class="decision-question">${d.question}</span><span class="decision-meta"><span class="chip ${isMaterial ? 'material' : 'good'}">${isMaterial ? 'Material' : 'Operational'}</span>${d.changedFromAI ? '<span class="chip changed">Student override</span>' : ''}${unresolvedDecisionIds.has(d.id) ? '<span class="chip unresolved">Unresolved</span>' : ''}<span class="chip ${chipClass(d.confidence)}">${d.confidence}</span></span></summary><div class="decision-body"><div class="decision-answer"><strong>Certified answer</strong><br>${d.answer}</div><div class="detail-block"><h3>Evidence</h3><div class="evidence-list">${d.evidence.map(item => `<span title="${evidenceIndex[item]?.reliability || ''}">${evidenceText(item)}</span>`).join('')}</div></div><div class="detail-block"><h3>Review status</h3><p>${d.changedFromAI ? 'Agent 2 challenged part of Agent 1’s approach; the student-certified position records the approved refinement.' : 'Both AI analyses supported the evidence-backed approved position.'}</p></div>${audit}</div></details>`;
 }
 
@@ -27,7 +27,7 @@ function render() {
 }
 
 async function start() {
-  const response = await fetch('/submission.json?v=warehouse-reaudit-1');
+  const response = await fetch('/submission.json?v=owner-opex-trace-1');
   if (!response.ok) throw new Error('Submission data unavailable.');
   const data = await response.json();
   decisions = data.decisions;
